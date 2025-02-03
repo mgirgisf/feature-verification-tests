@@ -1,0 +1,6 @@
+cifmw_test_operator_stages:
+  - name: ansibletest-obs
+    type: ansibletest
+    test_vars_file: "/home/zuul/mgirgis/feature-verification-tests/test_obs.yaml"
+cifmw_run_tests: true
+cifmw_run_test_role: test_operator

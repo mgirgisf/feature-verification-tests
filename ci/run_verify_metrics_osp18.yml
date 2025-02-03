@@ -3,7 +3,7 @@
   hosts:  "{{ cifmw_target_hook_host | default('localhost')  }}"
   gather_facts: true
   environment:
-    KUBECONFIG: "{{ cifmw_openshift_kubeconfig }}"
+    KUBECONFIG: "/home/zuul/.kube/config"
     PATH: "{{ cifmw_path }}"
   vars_files:
     - vars/common.yml
@@ -11,7 +11,7 @@
   tasks:
     - name: Include vars from the extra_vars files
       ansible.builtin.include_vars:
-        dir: "{{ cifmw_basedir }}/artifacts/parameters"
+         dir: "path/to/mounted/configmaps/artifacts/parameters"
 
     - name: Patch observabilityclient into openstackclient
       ansible.builtin.shell:

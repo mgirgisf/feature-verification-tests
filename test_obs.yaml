@@ -1,0 +1,20 @@
+# Tests to be executed
+cifmw_run_tests: true
+cifmw_run_ansibletest: true
+run_test_fw: ansibletest
+# Test operator
+cifmw_run_test_role: test_operator
+cifmw_test_operator_ansibletest_image: quay.io/podified-master-centos9/openstack-ansible-tests
+cifmw_test_operator_ansibletest_image_tag: current-podified
+cifmw_test_operator_ansibletest_workload_ssh_key_secret_name: 'osp-secret'
+cifmw_test_operator_ansibletest_ansible_git_repo: https://github.com/eshulman2/feature-verification-tests.git
+cifmw_test_operator_ansibletest_ansible_playbook_path: ci/run_verify_metrics_osp18.yml
+cifmw_test_operator_ansibletest_debug: true
+cifmw_test_operator_ansibletest_ansible_inventory: |
+    localhost ansible_connection=local ansible_python_interpreter=python3
+    #cifmw_test_operator_ansibletest_workflow:
+    #  - stepName: dpdk
+    #    ansibleExtraVars: ' -e manual_run=false -e binary_perf_log=/var/lib/AnsibleTests/external_files/dpdk_performance.log -e dut_group=dpdk_dut -e dut_type=dpdk -e testpmd_lcores=3,4,5 -e trex_rate=2 -e emc_insert_inv_prob=100 -e clone_traffic_gen_repo=false -e private_key_fetch_location=~/ -e python_interperter=/usr/bin/python3 '
+    #  - stepName: sriov
+    #    ansibleExtraVars: ' -e manual_run=false -e binary_perf_log=/var/lib/AnsibleTests/external_files/sriov_performance.log -e dut_group=sriov_dut -e dut_type=sriov -e testpmd_lcores=1,2,3 -e trex_rate=15 -e clone_traffic_gen_repo=false -e private_key_fetch_location=~/ -e python_interperter=/usr/bin/python3 '
+    #
